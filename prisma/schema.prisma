@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  role      String   @default("user")
+  createdAt DateTime @default(now())
+}
+
+model Testimonial {
+  id        String   @id @default(cuid())
+  name      String
+  quote     String
+  rating    Int
+  status    String   @default("pending")
+  isMarquee Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model PageView {
+  id        String   @id @default(cuid())
+  path      String
+  ipHash    String
+  sessionId String?
+  createdAt DateTime @default(now())
+  @@index([createdAt])
+  @@index([ipHash])
+}
+
+model GenerateEvent {
+  id        String   @id @default(cuid())
+  platform  String
+  tone      String
+  ipHash    String
+  sessionId String?
+  createdAt DateTime @default(now())
+  @@index([createdAt])
+  @@index([platform])
+  @@index([tone])
+}

@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-parchment: #F5F0E6;
+  --color-paper: #FFFEFB;
+  --color-ink: #1A1A18;
+  --color-ink2: #8B2E1F;
+  --color-terracotta: #C45A3C;
+  --color-amber: #D4A84B;
+  --color-emerald: #6B7F3D;
+  --color-background: #F5F0E6;
+  --color-foreground: #1A1A18;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* { scrollbar-width: thin; scrollbar-color: #d6d3d1 transparent; }
+html { scroll-behavior: smooth; }
+body { background: #F5F0E6; color: #1A1A18; font-family: var(--font-geist-sans), system-ui, sans-serif; }
+::selection { background: #C45A3C; color: white; }
+
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }

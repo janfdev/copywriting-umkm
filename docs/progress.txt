@@ -1,0 +1,23 @@
+# Progress — asisten-copywriting-next (Next.js)
+
+Learnings (from previous Bun monorepo):
+- Prisma 7: remove runtime `bun` for Vercel (use `runtime nodejs` or omit), singleton globalThis, not pg Pool TCP without Hyperdrive — Vercel needs Neon HTTP or Accelerate.
+- Contracts are source of truth — colocate lib/contracts, not packages/*.
+- Env: .env + .env.local gitignored, Vercel Dashboard Production vars.
+- Taste: single accent #C45A3C lock, parchment #F5F0E6, eyebrow 1/3, marquee 1×, hero 4 elements max.
+- Build: `next build` (not turbo), auto `routeTree.gen.ts` replaced by App Router.
+- Bun: lokal pakai Bun (bun install --ignore-scripts, bun pm trust, bun --bunx prisma generate), deploy tetap runtime nodejs.
+- Docs dipindah ke docs/ (CONTEXT, FIELD-GUIDE, PRD, UI-REDESIGN-PREVIEW, prd.json, progress.txt).
+
+Stories (8, bigger than 16 micro — one Next.js iteration can handle more):
+- [x] US-001 Next.js scaffold + Prisma + env
+- [x] US-002 Contracts + POST /api/generate-copy
+- [x] US-003 Testimonials API
+- [x] US-004 Analytics API
+- [x] US-005 Landing taste
+- [x] US-006 Admin analytics + testimonials
+- [x] US-007 Guides (FIELD-GUIDE + UI-REDESIGN-PREVIEW + .env.example)
+- [x] US-008 E2E + deploy (vitest 15 pass, next build green)
+
+Build: DATABASE_URL dummy untuk CI; set real Neon URL untuk db:push/seed.
+Ralph: pick next passes=false, implement one story, update progress.txt, mark passes=true only if all AC met.
