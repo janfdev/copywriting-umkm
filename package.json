@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
     "test": "vitest run",
@@ -39,6 +39,10 @@
     "vitest": "^3.0.0"
   },
   "trustedDependencies": [
-    "unrs-resolver"
+    "unrs-resolver",
+    "prisma",
+    "@prisma/client",
+    "@prisma/engines",
+    "esbuild"
   ]
 }
