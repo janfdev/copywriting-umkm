@@ -1,9 +1,22 @@
 "use client";
 import Link from "next/link";
-import { Sparkles, ShieldCheck } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { Sparkles, ShieldCheck, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function SiteNav() {
+  const [authed, setAuthed] = useState<boolean | null>(null);
+  const router = useRouter();
+  useEffect(() => {
+    fetch("/api/auth/me").then((r) => r.json()).then((j) => setAuthed(!!j.data)).catch(() => setAuthed(false));
+  }, []);
+  const logout = async () => {
+    await fetch("/api/auth/logout", { method: "POST" });
+    setAuthed(false);
+    router.push("/");
+    router.refresh();
+  };
   return (
     <header className="sticky top-0 z-40 border-b border-stone-200/60 bg-[#F5F0E6]/80 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
@@ -15,7 +28,14 @@ export function SiteNav() {
         <nav className="hidden md:flex items-center gap-1 rounded-full bg-white p-1 shadow-sm border">
           <a href="/#contoh" className="rounded-full px-3 py-1 text-xs font-medium hover:bg-stone-100">Contoh</a>
           <a href="/#buat-copy" className="rounded-full px-3 py-1 text-xs font-medium hover:bg-stone-100">Buat Copy</a>
-          <Link href="/admin/analytics" className="rounded-full px-3 py-1 text-xs font-medium hover:bg-stone-100 inline-flex items-center gap-1"><ShieldCheck className="h-3 w-3" />Admin</Link>
+          {authed ? (
+            <>
+              <Link href="/dashboard" className="rounded-full px-3 py-1 text-xs font-medium bg-stone-900 text-white inline-flex items-center gap-1"><ShieldCheck className="h-3 w-3" />Dashboard</Link>
+              <button onClick={logout} className="rounded-full px-3 py-1 text-xs font-medium hover:bg-stone-100 inline-flex items-center gap-1"><LogOut className="h-3 w-3" />Keluar</button>
+            </>
+          ) : (
+            <Link href="/login" className="rounded-full px-3 py-1 text-xs font-medium hover:bg-stone-100 inline-flex items-center gap-1"><ShieldCheck className="h-3 w-3" />Masuk</Link>
+          )}
         </nav>
         <a href="/#buat-copy">
           <Button size="sm" className="gap-1.5"><Sparkles className="h-4 w-4" />Buat copy</Button>

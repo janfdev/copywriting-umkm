@@ -1,11 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
+import { requireAdmin } from "@/lib/auth-guard";
 
 function rangeDays(range: string): number {
   return range === "30d" ? 30 : 7;
 }
 
 export async function GET(req: NextRequest) {
+  if (!(await requireAdmin())) return NextResponse.json({ status: "error", message: "Unauthorized" }, { status: 401 });
   const range = req.nextUrl.searchParams.get("range") ?? "7d";
   const days = rangeDays(range);
   const since = new Date();

@@ -8,6 +8,9 @@ const envSchema = z.object({
   GEMINI_API_KEY: z.string().optional().transform((v) => (v === "" ? undefined : v)),
   GEMINI_MODEL: z.string().default("gemini-2.0-flash"),
   JWT_SECRET: z.string().min(16, "JWT_SECRET min 16 chars").optional().transform((v) => (v === "" ? undefined : v)),
+  ADMIN_EMAIL: z.string().email().optional().transform((v) => (v === "" ? undefined : v)),
+  ADMIN_PASSWORD_HASH: z.string().optional().transform((v) => (v === "" ? undefined : v)),
+  ADMIN_PASSWORD: z.string().optional().transform((v) => (v === "" ? undefined : v)),
 });
 
 export type Env = z.infer<typeof envSchema>;
