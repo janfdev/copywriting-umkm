@@ -119,38 +119,45 @@ export default function DashboardOverview() {
 
       <Card className="rounded-2xl p-4">
         <div className="flex items-center justify-between gap-3 mb-3">
-          <h3 className="text-sm font-medium">Traffic · Views vs Generates</h3>
+          <div>
+            <h3 className="text-sm font-medium">Traffic harian · Views vs Generates</h3>
+            <p className="text-xs text-neutral-500">{range === "7d" ? "7 hari" : "30 hari"} · bar harian (stacked)</p>
+          </div>
           <Link href="/dashboard/analytics" className="inline-flex items-center gap-1 text-xs text-neutral-500 hover:text-neutral-900">
             Detail <ArrowUpRight className="h-3 w-3" />
           </Link>
         </div>
         {!data ? (
-          <Skeleton className="h-[220px] w-full rounded-xl" />
+          <Skeleton className="h-[240px] w-full rounded-xl" />
         ) : data.daily.every((d) => d.views === 0 && d.generates === 0) ? (
-          <div className="flex h-[160px] items-center justify-center rounded-xl border border-dashed bg-neutral-50/70 text-sm text-neutral-500">Belum ada traffic.</div>
+          <div className="flex h-[160px] items-center justify-center rounded-xl border border-dashed bg-neutral-50/70 text-sm text-neutral-500">Belum ada traffic — buka landing sebagai visitor untuk hit.</div>
         ) : (
           <div className="overflow-hidden rounded-xl border border-neutral-100">
             <div className="flex h-[220px] items-end gap-px bg-neutral-100 p-px">
-              {data.daily.map((d) => {
+              {(() => {
                 const max = Math.max(1, ...data.daily.map((x) => Math.max(x.views, x.generates)));
-                const h1 = (d.views / max) * 100;
-                const h2 = (d.generates / max) * 100;
-                return (
-                  <div key={d.date} className="flex flex-1 flex-col justify-end gap-px bg-white">
-                    <div className="w-full bg-[#C45A3C]/90" style={{ height: `${h1}%`, minHeight: d.views ? 2 : 0 }} title={`${d.date} views ${d.views}`} />
-                    <div className="w-full bg-[#D4A84B]" style={{ height: `${h2}%`, minHeight: d.generates ? 2 : 0 }} title={`${d.date} generates ${d.generates}`} />
+                return data.daily.map((d) => (
+                  <div key={d.date} className="flex flex-1 flex-col justify-end gap-px bg-white group relative">
+                    <div className="flex flex-1 flex-col justify-end gap-px">
+                      <div className="w-full bg-[#C45A3C]/90" style={{ height: `${(d.views / max) * 100}%`, minHeight: d.views ? 2 : 0 }} />
+                      <div className="w-full bg-[#D4A84B]" style={{ height: `${(d.generates / max) * 100}%`, minHeight: d.generates ? 2 : 0 }} />
+                    </div>
                     <span className="hidden sm:block truncate px-0.5 py-1 text-center text-[10px] text-neutral-400">{d.date.slice(5)}</span>
+                    <div className="pointer-events-none absolute bottom-full left-1/2 z-10 hidden -translate-x-1/2 whitespace-nowrap rounded-lg bg-neutral-900 px-2 py-1 text-[11px] text-white shadow group-hover:block">
+                      {d.date.slice(5)} · Views {d.views} · Gen {d.generates}
+                    </div>
                   </div>
-                );
-              })}
+                ));
+              })()}
             </div>
-            <div className="flex items-center gap-3 px-3 py-2 text-[11px] text-neutral-500">
+            <div className="flex flex-wrap items-center gap-3 px-3 py-2 text-[11px] text-neutral-500">
               <span className="inline-flex items-center gap-1.5">
-                <span className="h-2 w-2 rounded-full bg-[#C45A3C]" /> Views
+                <span className="h-2 w-2 rounded-full bg-[#C45A3C]" /> Views (page)
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <span className="h-2 w-2 rounded-full bg-[#D4A84B]" /> Generates
               </span>
+              <span className="ml-auto hidden sm:inline text-neutral-400">total {data.totals.views} views · {data.totals.generates} gen · {range}</span>
             </div>
           </div>
         )}
