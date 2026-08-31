@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const platformEnum = z.enum(["instagram", "whatsapp", "marketplace", "poster"]);
+export const platformEnum = z.enum(["instagram", "whatsapp", "tiktok", "facebook"]);
 export const toneEnum = z.enum(["santai", "formal", "persuasif", "ceria"]);
 
 export const generateCopySchema = z.object({

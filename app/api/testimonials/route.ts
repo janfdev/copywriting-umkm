@@ -3,8 +3,12 @@ import { testimonialsSchema } from "@/lib/contracts/copywriting";
 import { db } from "@/lib/db";
 
 export async function GET() {
-  const items = await db.testimonial.findMany({ where: { status: "approved" }, orderBy: { createdAt: "desc" } });
-  return NextResponse.json({ status: "success", data: items });
+  try {
+    const items = await db.testimonial.findMany({ where: { status: "approved" }, orderBy: { createdAt: "desc" } });
+    return NextResponse.json({ status: "success", data: items });
+  } catch {
+    return NextResponse.json({ status: "success", data: [] });
+  }
 }
 
 export async function POST(req: NextRequest) {

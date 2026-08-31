@@ -17,9 +17,9 @@ import { StrukCard } from "@/components/struk-card";
 import { generateCopySchema, type Platform, type Tone } from "@/lib/contracts/copywriting";
 
 const examples = [
-  { name: "Keripik Singkong", desc: "500gr renyah tanpa pengawet 15rb", platform: "instagram" as Platform, tone: "ceria" as Tone, text: "Bestie! Keripik Singkong 500gr renyah tanpa pengawet — 15rb aja! Stok terbatas!\n\n#Kaligawe #UMKM" },
+  { name: "Keripik Singkong", desc: "500gr renyah tanpa pengawet 15rb", platform: "instagram" as Platform, tone: "ceria" as Tone, text: "Bestie! Keripik Singkong 500gr renyah tanpa pengawet — 15rb aja! Stok terbatas!\n\n#Kaligawe #UMKM #JajananViral #FYP" },
   { name: "Jamu Kunyit Asem", desc: "Segar, tanpa pemanis buatan", platform: "whatsapp" as Platform, tone: "santai" as Tone, text: "*Hai kak! Jamu Kunyit Asem segar tanpa pemanis buatan — siap kirim Kaligawe!*" },
-  { name: "Batik Tulis Kaligawe", desc: "Motif khas, pewarna alami", platform: "marketplace" as Platform, tone: "formal" as Tone, text: "Perkenalkan! Batik Tulis Kaligawe motif khas pewarna alami | pewarna alami" },
+  { name: "Batik Tulis Kaligawe", desc: "Motif khas, pewarna alami", platform: "tiktok" as Platform, tone: "formal" as Tone, text: "STOP SCROLL! Batik Tulis Kaligawe motif khas pewarna alami — cuma 30 detik lihat!\n\n#Kaligawe #UMKMKaligawe #FYP #BatikViral" },
 ];
 
 function getSessionId() {
@@ -100,9 +100,6 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-4 pt-6 sm:pt-10 pb-8">
         <div className="grid gap-8 lg:grid-cols-[1.08fr_0.92fr] items-center">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full border bg-white px-3 py-1 text-xs shadow-sm">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />Untuk pedagang Pasar Kaligawe — gratis KKM
-            </div>
             <h1 className="mt-4 max-w-[18ch] text-[40px] font-bold leading-[0.92] tracking-[-0.03em] sm:text-[48px] lg:text-[54px] text-balance">
               Copy jualan <span className="font-serif italic font-normal text-[#8B2E1F]">siap-pakai</span> dalam 30 detik.
             </h1>
@@ -207,8 +204,8 @@ export default function Home() {
                   <select value={platform} onChange={(e) => setPlatform(e.target.value as Platform)} className="flex h-10 w-full rounded-xl border border-stone-200 bg-white px-3 text-sm">
                     <option value="instagram">Instagram</option>
                     <option value="whatsapp">WhatsApp</option>
-                    <option value="marketplace">Marketplace</option>
-                    <option value="poster">Poster</option>
+                    <option value="tiktok">TikTok</option>
+                    <option value="facebook">Facebook</option>
                   </select>
                 </div>
                 <div>
@@ -333,7 +330,7 @@ export default function Home() {
           {[
             ["Gratis?", "Ya, gratis untuk pedagang Kaligawe. Rate-limit 10/menit."],
             ["Perlu login?", "Tidak. Tanpa login, langsung pakai."],
-            ["Platform apa saja?", "Instagram (hashtag), WhatsApp (*bold*), Marketplace (|), Poster (UPPER)."],
+              ["Platform apa saja?", "Instagram (hashtag 5-10), WhatsApp (*bold* CTAs), TikTok (#FYP hook), Facebook (cerita)."],
           ].map(([q, a]) => (
             <details key={q} className="p-4 group">
               <summary className="flex justify-between cursor-pointer text-sm font-medium list-none">{q}<span className="text-stone-400 group-open:rotate-180">⌄</span></summary>
