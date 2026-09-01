@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { LayoutDashboard, BarChart3, MessageSquare, Home, Sparkles, LogOut, ChevronDown, Search } from "lucide-react";
+import { BRAND } from "@/lib/brand";
 
 const NAV = [
   { href: "/dashboard", label: "Overview", icon: LayoutDashboard, exact: true },
@@ -40,10 +41,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           className="hidden md:flex w-[248px] shrink-0 flex-col border-r border-neutral-200 bg-white p-3 sticky top-0 h-[100vh]"
         >
           <Link href="/" className="flex items-center gap-2.5 px-1.5 py-1 mb-3">
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#C45A3C] text-sm font-bold text-white shrink-0">K</span>
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#C45A3C] text-sm font-bold text-white shrink-0">{BRAND.logoLetter}</span>
             <span className="min-w-0">
-              <span className="block text-sm font-semibold leading-none tracking-tight">Kaligawe</span>
-              <span className="block text-[11px] text-neutral-500 leading-none mt-0.5">Asisten Copywriting</span>
+              <span className="block text-sm font-semibold leading-none tracking-tight">{BRAND.name}</span>
+              <span className="block text-[11px] text-neutral-500 leading-none mt-0.5">Asisten Caption UMKM</span>
             </span>
           </Link>
 
@@ -68,11 +69,11 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               </span>
               Beranda
             </Link>
-            <a href="/#buat-copy" className="flex items-center gap-2.5 rounded-xl px-2.5 py-1.5 text-[13px] text-neutral-500 hover:bg-neutral-100 hover:text-neutral-900 border border-transparent">
+            <a href="/#buat-caption" className="flex items-center gap-2.5 rounded-xl px-2.5 py-1.5 text-[13px] text-neutral-500 hover:bg-neutral-100 hover:text-neutral-900 border border-transparent">
               <span className="flex h-6 w-6 items-center justify-center rounded-md border bg-white border-neutral-200 text-neutral-400">
                 <Sparkles size={13} strokeWidth={2} />
               </span>
-              Buat copy
+              Buat caption
             </a>
           </div>
 

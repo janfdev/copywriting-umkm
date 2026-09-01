@@ -5,23 +5,29 @@ import { MarqueeBar } from "@/components/landing/marquee-bar";
 import { LandingBento } from "@/components/landing/bento";
 import { LandingExamples } from "@/components/landing/examples";
 import { LandingGenerator } from "@/components/landing/generator";
-import { LandingHistory, LandingTestimonials, LandingFaq } from "@/components/landing/history-and-testimonials";
+import { LandingHistory } from "@/components/landing/history";
+import { LandingTestimonials } from "@/components/landing/testimonials";
+import { LandingFaq } from "@/components/landing/faq";
 
 export default function Home() {
-  const [history, setHistory] = useState<{ productName: string; variants: string[] }[]>([]);
+  const [history, setHistory] = useState<{ productName: string; variants: string[] }[]>(() => {
+    if (typeof window === "undefined") return [];
+    try {
+      return JSON.parse(localStorage.getItem("caption_history") || "[]");
+    } catch {
+      return [];
+    }
+  });
   const [testimonials, setTestimonials] = useState<{ name: string; quote: string; rating: number }[]>([]);
   const [marquee, setMarquee] = useState<{ name: string; quote: string }[]>([]);
 
   useEffect(() => {
-    try {
-      setHistory(JSON.parse(localStorage.getItem("copy_history") || "[]"));
-    } catch {}
     fetch("/api/testimonials")
       .then((r) => r.json())
       .then((j) => j.data && setTestimonials(j.data))
       .catch(() =>
         setTestimonials([
-          { name: "Bu Siti", quote: "Copy-nya langsung laris di WA!", rating: 5 },
+          { name: "Bu Siti", quote: "Caption-nya langsung laris di WA!", rating: 5 },
           { name: "Pak Joko", quote: "Biasa bingung caption IG, sekarang 30 detik jadi.", rating: 5 },
           { name: "Mbak Rina", quote: "Marketplace butuh judul SEO, dibantu banget.", rating: 4 },
         ]),

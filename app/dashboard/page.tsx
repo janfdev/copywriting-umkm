@@ -111,7 +111,7 @@ export default function DashboardOverview() {
       ) : (
         <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
           <KpiCard label="Total Views" value={data.totals.views} delta={data.deltas.views} desc="vs periode sebelumnya" Icon={Eye} spark={sparkViews} selected={selected === "views"} onClick={() => setSelected(selected === "views" ? null : "views")} />
-          <KpiCard label="Generates" value={data.totals.generates} delta={data.deltas.generates} desc="copy berhasil digenerate" Icon={Sparkles} spark={sparkGen} selected={selected === "gen"} onClick={() => setSelected(selected === "gen" ? null : "gen")} />
+          <KpiCard label="Generates" value={data.totals.generates} delta={data.deltas.generates} desc="caption berhasil dibuat" Icon={Sparkles} spark={sparkGen} selected={selected === "gen"} onClick={() => setSelected(selected === "gen" ? null : "gen")} />
           <KpiCard label="Testimonials" value={testiCount ?? 0} desc="total moderasi" Icon={MessageSquare} selected={selected === "testi"} onClick={() => setSelected(selected === "testi" ? null : "testi")} />
           <KpiCard label="Platform top" value={data.byPlatform[0]?.name ?? "—"} desc={data.byPlatform[0] ? `${data.byPlatform[0].value} generate` : "belum ada data"} Icon={Activity} />
         </div>
@@ -180,7 +180,7 @@ export default function DashboardOverview() {
               <span className="text-neutral-500"> approve/reject + marquee</span>
             </li>
             <li>
-              <a href="/#buat-copy" className="text-[#C45A3C] hover:underline">
+              <a href="/#buat-caption" className="text-[#C45A3C] hover:underline">
                 Generator Landing →
               </a>
               <span className="text-neutral-500"> uji generate end-to-end</span>

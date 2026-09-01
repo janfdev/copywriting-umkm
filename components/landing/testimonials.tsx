@@ -8,23 +8,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 
-export function LandingHistory({ history }: { history: { productName: string; variants: string[] }[] }) {
-  if (history.length === 0) return null;
-  return (
-    <section className="mx-auto max-w-6xl px-4 pb-6">
-      <h3 className="text-sm font-semibold">Riwayat (5 terbaru)</h3>
-      <div className="mt-2 grid gap-2">
-        {history.map((h, i) => (
-          <div key={i} className="rounded-xl bg-white border p-3 flex items-center justify-between">
-            <span className="text-sm font-medium">{h.productName}</span>
-            <span className="text-xs text-stone-500">{h.variants.length} varian</span>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
 export function LandingTestimonials({
   testimonials,
   marquee,
@@ -126,28 +109,5 @@ export function LandingTestimonials({
         </div>
       )}
     </>
-  );
-}
-
-export function LandingFaq() {
-  return (
-    <section className="mx-auto max-w-6xl px-4 py-8">
-      <h3 className="font-semibold">FAQ</h3>
-      <div className="mt-3 rounded-2xl bg-white border divide-y">
-        {[
-          ["Gratis?", "Ya, gratis untuk pedagang Kaligawe. Rate-limit 10/menit."],
-          ["Perlu login?", "Tidak. Tanpa login, langsung pakai."],
-          ["Platform apa saja?", "Instagram (hashtag 5-10), WhatsApp (*bold* CTAs), TikTok (#FYP hook), Facebook (cerita)."],
-        ].map(([q, a]) => (
-          <details key={q} className="p-4 group">
-            <summary className="flex justify-between cursor-pointer text-sm font-medium list-none">
-              {q}
-              <span className="text-stone-400 group-open:rotate-180">⌄</span>
-            </summary>
-            <p className="pt-2 text-sm text-stone-600">{a}</p>
-          </details>
-        ))}
-      </div>
-    </section>
   );
 }

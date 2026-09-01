@@ -17,13 +17,13 @@ export function LandingHero() {
       <div className="grid gap-8 lg:grid-cols-[1.08fr_0.92fr] items-center">
         <div>
           <h1 className="mt-4 max-w-[18ch] text-[40px] font-bold leading-[0.92] tracking-[-0.03em] sm:text-[48px] lg:text-[54px] text-balance">
-            Copy jualan <span className="font-serif italic font-normal text-[#8B2E1F]">siap-pakai</span> dalam 30 detik.
+            Caption jualan <span className="font-serif italic font-normal text-[#8B2E1F]">siap-pakai</span> dalam 30 detik.
           </h1>
           <p className="mt-3 max-w-[42ch] text-[15px] leading-relaxed text-stone-600">Deskripsi singkat → 3 varian caption. Salin, tempel, jualan.</p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <Link href="#buat-copy">
+            <Link href="#buat-caption">
               <Button size="lg" className="gap-2">
-                Buat copy sekarang <ArrowRight className="h-4 w-4" />
+                Buat caption sekarang <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
             <Link href="#contoh">
