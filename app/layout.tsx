@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SiteNavWrapper />
         <main className="flex-1">{children}</main>
         <SiteFooter />
-        <Toaster richColors />
+        <Toaster />
       </body>
     </html>
   );
