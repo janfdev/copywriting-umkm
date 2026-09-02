@@ -8,7 +8,6 @@ import { BRAND } from "@/lib/brand";
 const LINKS = [
   { href: "/#contoh", label: "Contoh" },
   { href: "/#buat-caption", label: "Buat Caption" },
-  { href: "/about", label: "Tentang" },
 ];
 
 export function SiteNav() {
