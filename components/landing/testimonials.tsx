@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { toast } from "sonner";
+import toast from "react-hot-toast";
 import { Star, Megaphone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";

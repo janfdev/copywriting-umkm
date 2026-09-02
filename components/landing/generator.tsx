@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { toast } from "sonner";
+import toast from "react-hot-toast";
 import { GeneratorForm } from "./generator-form";
 import { GeneratorPreview } from "./generator-preview";
 import { generateCopySchema, type Platform, type Tone } from "@/lib/contracts/copywriting";
@@ -40,7 +40,7 @@ export function LandingGenerator({
     if (!parsed.success) {
       const msg = parsed.error.issues[0].message;
       setError(msg);
-      toast.error(msg, { description: "Perbaiki field yang ditandai" });
+      toast.error(msg);
       return;
     }
     setLoading(true);
@@ -62,9 +62,7 @@ export function LandingGenerator({
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "Gagal mencetak";
       setError(msg);
-      toast.error(msg, { 
-        description: res.ok ? "Coba lagi dalam 1 menit" : "Periksa koneksi internet" 
-      });
+      toast.error(msg);
     } finally {
       setLoading(false);
     }
