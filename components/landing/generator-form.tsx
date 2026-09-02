@@ -34,10 +34,10 @@ export function GeneratorForm({ productName, setProductName, description, setDes
       <form onSubmit={onSubmit} className="mt-4 space-y-4">
         <div>
           <Label className={nameError ? "text-red-600" : ""}>Nama produk *</Label>
-          <Input 
-            value={productName} 
-            onChange={(e) => setProductName(e.target.value)} 
-            placeholder="Keripik Singkong Original" 
+          <Input
+            value={productName}
+            onChange={(e) => setProductName(e.target.value)}
+            placeholder="Keripik Singkong Original"
             maxLength={60}
             className={nameError ? "border-red-500 focus:border-red-500 ring-1 ring-red-500" : ""}
           />
@@ -47,11 +47,11 @@ export function GeneratorForm({ productName, setProductName, description, setDes
         </div>
         <div>
           <Label className={descError ? "text-red-600" : ""}>Deskripsi singkat *</Label>
-          <Textarea 
-            value={description} 
-            onChange={(e) => setDescription(e.target.value)} 
-            placeholder="Keripik singkong 500gr, renyah, tanpa pengawet, harga 15rb..." 
-            rows={3} 
+          <Textarea
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Keripik singkong 500gr, renyah, tanpa pengawet, harga 15rb..."
+            rows={3}
             maxLength={500}
             className={descError ? "border-red-500 focus:border-red-500 ring-1 ring-red-500" : ""}
           />
@@ -84,12 +84,6 @@ export function GeneratorForm({ productName, setProductName, description, setDes
             </select>
           </div>
         </div>
-        {error && (
-          <Alert variant="destructive">
-            <AlertTitle>Gagal mencetak</AlertTitle>
-            <AlertDescription>{error}</AlertDescription>
-          </Alert>
-        )}
         <Button type="submit" disabled={loading} className="w-full gap-2">
           {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4" />} {loading ? "Mencetak 3 struk…" : "Cetak 3 varian — Gratis"}
         </Button>
