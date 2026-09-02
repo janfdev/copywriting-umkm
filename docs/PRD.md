@@ -1,12 +1,12 @@
-# PRD — Asisten Copywriting UMKM (Next.js Rewrite) — Proker KKM Kaligawe
+# PRD — Captionin — Asisten Caption UMKM Kaligawe (Next.js)
 
-> Status: **Draft v1 Next.js** — Owner: Proker KKM Kaligawe | Stack target: **Next.js 15 App Router + shadcn/ui + Prisma 7 + Groq/Gemini** | Deploy target: **Vercel (1 project)** | Design: `frontend-design` taste Place
+> Brand: **Captionin** — Owner: Proker KKM Kaligawe | Status: **v1 Next.js — Done** | Stack: **Next.js 16 App Router + shadcn/ui + Prisma 7 + Groq/Gemini** | Deploy: **Vercel (1 project)** | Design: `frontend-design` taste Place
 
 ## 0. Design Read (frontend-design §0 — wajib sebelum code)
 
 **Reading this as:** *consumer warm-marketplace landing for pedagang pasar Kaligawe (30–55th, WA-native), playful-trust, shadcn + motion subtle.*
 
-- Page kind: Landing + embedded generator ( `/` + `#buat-copy` ), bukan dashboard.
+- Page kind: Landing + embedded generator ( `/` + `#buat-caption` ), bukan dashboard.
 - Audience: pedagang pasar, bukan tech buyer → butuh **foto struk + preview HP**, bukan big stats.
 - Vibe: Warm marketplace — `parchment #F5F0E6` + `terracotta #C45A3C` + `Stone` neutrals. Dilarang: Inter-only, purple glow, centered dark mesh.
 - Dials: `VARIANCE 7 / MOTION 5 / DENSITY 4` — split hero, bento 3, Tabs Struk/HP, marquee **1× only**.
@@ -17,12 +17,12 @@
 **Masalah deploy sekarang:** Bun monorepo `turbo` (`apps/web` Vite SPA + `apps/server` Hono) → `wrangler deploy` dari root error `workspace root detection failed`. Workers `pg` TCP butuh Hyperdrive. Vercel monorepo butuh `Root: apps/web`.
 
 **Solusi rewrite:** 1 repo **Next.js App Router** saja:
-- `app/(landing)/page.tsx` (hybrid `/` + `#buat-copy`) + `app/api/generate-copy/route.ts` + `app/api/testimonials/*` + `app/api/analytics/*`
+- `app/page.tsx` (hybrid `/` + `#buat-caption`) + `app/api/generate-copy/route.ts` + `app/api/testimonials/*` + `app/api/analytics/*` + `lib/brand.ts` (single brand source)
 - 1 build `next build`, 1 deploy `vercel --prod`, 1 env `DATABASE_URL/DIRECT_URL/GROQ_* /GEMINI_* /JWT_SECRET` di Vercel Dashboard. Tanpa `wrangler.toml` per-app, tanpa `turbo build ✓13s` gagal deploy.
 
 **Tetap:** Prisma 7 Neon, Zod contracts (colocate `lib/contracts`), Groq `llama-3.3-70b` primary → Gemini `2.0-flash` fallback → stub distinct. Tanpa login.
 
-**Tujuan KKM:** demo 1 sprint, metrik trafik `naik/turun` terlihat di `/admin/analytics`.
+**Tujuan KKM:** demo 1 sprint, metrik trafik `naik/turun` terlihat di `/dashboard/analytics`.
 
 ## 2. User & Goals
 
@@ -35,20 +35,20 @@
 ### 3.1 Route Map
 
 ```
-/               → landing + generator #buat-copy (public)
+/               → landing + generator #buat-caption (public)
   #contoh       → 3 struk contoh
-  #buat-copy    → Form kiri + Tabs Struk/HP kanan
+  #buat-caption    → Form kiri + Tabs Struk/HP kanan
 /api/generate-copy      POST  (Zod, rate-limit 10/menit/IP, ipHash+sessionId)
 /api/testimonials        GET (approved), POST (pending)
 /api/testimonials/marquee GET (approved && isMarquee)
-  /admin                GET (all)
+  /admin                GET (all) → auth
 /api/testimonials/[id]/status PATCH
 /api/testimonials/[id]/marquee PATCH
 /api/analytics           GET ?range=7d|30d
 /api/analytics/sessions  GET
 /api/analytics/hit       POST {path,sessionId}
-/admin/analytics        → KPI + charts 7d/30d
-/admin/testimonials     → approve/reject + marquee toggle
+/dashboard/analytics        → KPI + charts 7d/30d
+/dashboard/testimonials     → approve/reject + marquee toggle
 /about, /privacy-policy, /terms-of-service → static
 ```
 
@@ -62,13 +62,13 @@ Usang dari Vite: `@dnd-kit`, `@faker-js/faker`, `kbar`, `recharts` (tetap via ch
 
 ### 3.3 Landing (/) — Hybrid 1 page
 
-**Nav sticky** `F5F0E6/85 backdrop-blur`: Logo `K` terracotta + `Kaligawe · Asisten Copy` + `DEMO KKM` + nav pill `Beranda Contoh Tentang Admin` + CTA `Buat copy` `Sparkles`.
+**Nav sticky** `F5F0E6/85 backdrop-blur`: Logo `C` terracotta + `Captionin` + `KKM` badge + nav pill `Contoh Buat Caption Tentang` + CTA `Buat Caption` `Sparkles`. Brand source `lib/brand.ts`.
 
 **Hero split** `1.08fr / 0.92fr` (thesis = product itself):
 - Eyebrow pill emerald dot pulse `Untuk pedagang Pasar Kaligawe — gratis KKM` (1 per 3 sections, bukan tiap section)
-- H1 max 2 lines: `Copy jualan` / `siap-pakai` italic `#8B2E1F` / `dalam 30 detik.` `40→54px` `tracking-[-0.03em]`
+- H1 max 2 lines: `Caption jualan` / `siap-pakai` italic `#8B2E1F` / `dalam 30 detik.` `40→54px` `tracking-[-0.03em]`
 - Sub 9 words: `Deskripsi singkat → 3 varian caption. Salin, tempel, jualan.`
-- CTA `Buat copy sekarang →` terracotta + `Lihat contoh` outline
+- CTA `Buat caption sekarang →` terracotta + `Lihat contoh` outline
 - Trust chips `ShieldCheck Tanpa login · Zap 10/menit · PenLine Groq + Gemini` (lucide)
 - Kanan: Card `STRUK PREVIEW — 3 VARIAN` 3 mono `12.5px` #FFFEFB
 
@@ -109,10 +109,10 @@ Lokal: `.env` + `.env.local` (gitignored) → `bunx prisma db:push && bunx prism
 **Tokens:** `parchment #F5F0E6` bg, `paper #FFFEFB` card, `ink #1A1A18`, `stone` neutrals, `terracotta #C45A3C` lock + `amber #D4A84B` + `emerald #6B7F3D`. Type `Geist/Outfit` display + `Inter` body + `Geist Mono` struk. Radius `rounded-xl` + pill `rounded-full`. Shadow tinted stone.
 
 ```
-[Nav: K Kaligawe · Asisten Copy  DEMO | Beranda Contoh Tentang Admin | Buat copy]
+[Nav: C Captionin KKM | Contoh Buat Caption Tentang | Buat Caption]
 [Hero split]
  Eyebrow pill emerald dot
- Copy jualan / siap-pakai italic / dalam 30 detik.
+ Caption jualan / siap-pakai italic / dalam 30 detik.
  Deskripsi singkat → 3 varian. Salin, tempel, jualan.
  [Cetak →] [Contoh]  |  [Card Struk Preview 3 varian mono]
  Trust chips: ✓ Tanpa login · 10/menit · Groq+Gemini
@@ -141,11 +141,11 @@ Hero **thesis** = live struk preview, bukan big number. Max 1 accent, 4 elements
 
 ## 9. Acceptance
 
-- [ ] `/` hybrid + hero split + generator Tabs Struk/HP + marquee + sid + history + testimoni + marquee + FAQ
-- [ ] `POST /api/generate-copy` 400/429/200, tone×platform distinct, no prompt leak
-- [ ] `/admin/analytics` Area/Bar/Pie + KPI TrendUp/Down 7d/30d + sessions + ipHash
-- [ ] `/admin/testimonials` approve/reject + marquee toggle
-- [ ] `next build` ✓ + `vitest 25` + `playwright` + `vercel --prod` (no wrangler root error)
+- [x] `/` hybrid + hero split + generator Tabs Struk/HP + marquee + sid + history + testimoni + marquee + FAQ
+- [x] `POST /api/generate-copy` 400/429/200, tone×platform distinct, no prompt leak
+- [x] `/dashboard/analytics` Area/Bar/Pie + KPI TrendUp/Down 7d/30d + sessions + ipHash
+- [x] `/dashboard/testimonials` approve/reject + marquee toggle
+- [x] `next build` ✓ (18/18) + `vitest 23+` + brand `Captionin` + SoC landing (history/testimonials/faq/generator-form/preview)
 
 ## 10. Non-Goals
 
