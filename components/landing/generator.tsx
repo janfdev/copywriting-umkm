@@ -38,7 +38,9 @@ export function LandingGenerator({
     setError(null);
     const parsed = generateCopySchema.safeParse({ productName, description, highlights, platform, tone });
     if (!parsed.success) {
-      setError(parsed.error.issues[0].message);
+      const msg = parsed.error.issues[0].message;
+      setError(msg);
+      toast.error(msg, { description: "Perbaiki field yang ditandai" });
       return;
     }
     setLoading(true);
@@ -60,7 +62,9 @@ export function LandingGenerator({
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "Gagal mencetak";
       setError(msg);
-      toast.error(msg);
+      toast.error(msg, { 
+        description: res.ok ? "Coba lagi dalam 1 menit" : "Periksa koneksi internet" 
+      });
     } finally {
       setLoading(false);
     }

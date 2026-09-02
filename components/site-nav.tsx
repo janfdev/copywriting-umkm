@@ -19,7 +19,6 @@ export function SiteNav() {
         <Link href="/" className="flex items-center gap-2.5 shrink-0">
           <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#C45A3C] text-sm font-bold text-white">{BRAND.logoLetter}</span>
           <span className="text-sm font-semibold tracking-tight">{BRAND.name}</span>
-          <span className="hidden sm:inline-flex rounded-full border border-stone-200 bg-white px-2 py-0.5 text-[10px] font-semibold tracking-widest text-stone-500">KKM</span>
         </Link>
         <nav className="hidden md:flex items-center gap-1">
           {LINKS.map((l) => (

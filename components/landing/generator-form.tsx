@@ -25,25 +25,44 @@ type Props = {
 };
 
 export function GeneratorForm({ productName, setProductName, description, setDescription, highlights, setHighlights, platform, setPlatform, tone, setTone, loading, error, onSubmit }: Props) {
+  const nameError = error?.toLowerCase().includes("produk") || error?.toLowerCase().includes("2");
+  const descError = error?.toLowerCase().includes("deskripsi") || error?.toLowerCase().includes("20");
   return (
     <Card className="p-6">
       <h2 className="font-semibold">Buat caption</h2>
       <p className="text-xs text-stone-500">Hasil menyesuaikan platform & nada</p>
       <form onSubmit={onSubmit} className="mt-4 space-y-4">
         <div>
-          <Label>Nama produk *</Label>
-          <Input value={productName} onChange={(e) => setProductName(e.target.value)} placeholder="Keripik Singkong Original" maxLength={60} />
-          <p className="mt-1 text-[11px] text-stone-500">Maks 60</p>
+          <Label className={nameError ? "text-red-600" : ""}>Nama produk *</Label>
+          <Input 
+            value={productName} 
+            onChange={(e) => setProductName(e.target.value)} 
+            placeholder="Keripik Singkong Original" 
+            maxLength={60}
+            className={nameError ? "border-red-500 focus:border-red-500 ring-1 ring-red-500" : ""}
+          />
+          <p className={`mt-1 text-[11px] ${nameError ? "text-red-500 font-medium" : "text-stone-500"}`}>
+            {productName.length}/60 — {productName.length < 2 ? "minimal 2 karakter" : productName.length > 60 ? "maksimal 60" : "ok"}
+          </p>
         </div>
         <div>
-          <Label>Deskripsi singkat *</Label>
-          <Textarea value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Keripik singkong 500gr, renyah, tanpa pengawet, harga 15rb..." rows={3} maxLength={500} />
-          <p className="mt-1 text-[11px] text-stone-500">{description.length}/500 — minimal 20</p>
+          <Label className={descError ? "text-red-600" : ""}>Deskripsi singkat *</Label>
+          <Textarea 
+            value={description} 
+            onChange={(e) => setDescription(e.target.value)} 
+            placeholder="Keripik singkong 500gr, renyah, tanpa pengawet, harga 15rb..." 
+            rows={3} 
+            maxLength={500}
+            className={descError ? "border-red-500 focus:border-red-500 ring-1 ring-red-500" : ""}
+          />
+          <p className={`mt-1 text-[11px] ${descError ? "text-red-500 font-medium" : "text-stone-500"}`}>
+            {description.length}/500 — {description.length < 20 ? `minimal 20 (${description.length})` : "ok"}
+          </p>
         </div>
         <div>
           <Label>Keunggulan (opsional)</Label>
           <Input value={highlights} onChange={(e) => setHighlights(e.target.value)} placeholder="tanpa pengawet, 500gr" maxLength={200} />
-          <p className="mt-1 text-[11px] text-stone-500">Maks 200</p>
+          <p className="mt-1 text-[11px] text-stone-500">{highlights.length}/200</p>
         </div>
         <div className="grid grid-cols-2 gap-3">
           <div>
