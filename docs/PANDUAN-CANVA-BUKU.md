@@ -1,6 +1,6 @@
 # Canva Prompt per Halaman — Buku Panduan Captionin
 
-> Buat 4 halaman A5 (atau A4 2 lembar). Cover sudah sendiri.
+> Buat 7 halaman A5 (cover hal 1 buat sendiri, isi hal 2–7 di bawah). Cetak A5 lipat atau A4 bolak-balik.
 
 ---
 
@@ -92,6 +92,97 @@ FOOTER (bawah):
 - "Limit 10 permintaan per menit"
 
 WARNA: tips box putih, QR box #FFFEFB dashed
+```
+
+---
+
+## Halaman 5 — Cara Isi Field (Benar / Gagal)
+
+```
+LAYOUT:
+- Judul: "CARA ISI FIELD" (bold, 24px, terracotta #C45A3C)
+- Tabel 3 kolom: Field | Benar ✅ | Gagal ❌ — 4 baris, cards putih
+
+BARIS 1 — NAMA PRODUK:
+- Benar: "Keripik Singkong Original" (2–60 huruf)
+- Gagal: "A" — terlalu pendek, border merah
+
+BARIS 2 — DESKRIPSI:
+- Benar: "Keripik singkong 500gr renyah tanpa pengawet 15rb" (20–500 huruf)
+- Gagal: "Enak" — minimal 20 huruf, submit batal
+
+BARIS 3 — KEUNGGULAN (opsional):
+- Benar: "tanpa pengawet, 500gr" (≤200 huruf, masuk ke 3 varian)
+- Gagal: 200+ huruf — ditolak, toast merah
+
+BARIS 4 — PLATFORM & NADA:
+- Benar: Instagram / WhatsApp / TikTok / Facebook + Santai / Formal / Ceria / Persuasif
+- Catatan: tiap platform format beda (IG hashtag, WA *bold*, TikTok #FYP, FB cerita)
+
+FOOTER KECIL:
+- "Helper: Maks 60 · {len}/500 — minimal 20 · Loading: 3 struk skeleton"
+
+WARNA: background #F5F0E6, header tabel #1A1A18 teks putih, baris putih
+```
+
+---
+
+## Halaman 6 — Jika Gagal + FAQ
+
+```
+LAYOUT:
+- Split atas: troubleshooting (kiri) + error code (kanan)
+- Bawah: FAQ 3 item accordion-style
+
+KIRI — JIKA GAGAL:
+- Judul: "JIKA GAGAL" (bold, terracotta)
+- List dengan icon ⚠️:
+  1. Border merah + pesan → perbaiki field sesuai aturan
+  2. "Terlalu sering" → tunggu 1 menit (limit 10/menit)
+  3. Tidak ada struk → cek koneksi internet, coba lagi
+
+KANAN — KODE ERROR:
+- Judul: "ARTI KODE" (bold)
+- Box mono #FFFEFB dashed:
+  • 400 = validasi (field kurang)
+  • 429 = limit (tunggu 1 menit)
+  • 500 = server/AI sibuk (coba lagi)
+
+BAWAH — FAQ:
+- Judul: "SERING DITANYA" (bold, terracotta)
+- Q1: "Gratis?" → A: "Ya, gratis untuk pedagang Kaligawe."
+- Q2: "Perlu login?" → A: "Tidak. Langsung pakai."
+- Q3: "Hasil bisa diedit?" → A: "Bisa. Salin lalu ubah sesukamu sebelum posting."
+
+WARNA: background #F5F0E6, error box merah muda #FEF2F2 border merah, FAQ putih
+```
+
+---
+
+## Halaman 7 — Penutup + QR Besar
+
+```
+LAYOUT:
+- Tengah: QR besar + ajakan + testimoni mini + footer
+
+ATAS — AJAKAN:
+- Judul: "COBA SEKARANG" (bold, 28px, terracotta)
+- Sub: "Deskripsi singkat → 3 varian caption. Salin, tempel, jualan."
+
+TENGAH — QR BESAR:
+- QR code (160×160px) → https://captionin.vercel.app/#buat-caption
+- Link text mono: captionin.vercel.app/#buat-caption
+- Badge: "GRATIS · TANPA LOGIN · 10x/menit"
+
+BAWAH — TESTIMONI MINI (2 kolom):
+- "Caption-nya langsung laris di WA!" — Bu Siti ⭐⭐⭐⭐⭐
+- "Biasa bingung caption IG, sekarang 30 detik jadi." — Pak Joko ⭐⭐⭐⭐⭐
+
+FOOTER:
+- "© KKM Kaligawe · Captionin — Asisten Caption UMKM"
+- "KKM Kaligawe 2026 · Pasar Kaligawe"
+
+WARNA: background #1A1A18 (ink, halaman penutup gelap), teks putih, QR box putih rounded
 ```
 
 ---
