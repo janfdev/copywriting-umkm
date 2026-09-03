@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Menu, X, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BRAND } from "@/lib/brand";
+import { Logo } from "@/components/logo";
 
 const LINKS = [
   { href: "/#contoh", label: "Contoh" },
@@ -16,7 +17,7 @@ export function SiteNav() {
     <header className="sticky top-0 z-40 border-b border-stone-200/60 bg-[#F5F0E6]/80 backdrop-blur supports-[backdrop-filter]:bg-[#F5F0E6]/70">
       <div className="mx-auto flex h-[56px] max-w-6xl items-center justify-between gap-4 px-4">
         <Link href="/" className="flex items-center gap-2.5 shrink-0">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#C45A3C] text-sm font-bold text-white">{BRAND.logoLetter}</span>
+          <Logo />
           <span className="text-sm font-semibold tracking-tight">{BRAND.name}</span>
         </Link>
         <nav className="hidden md:flex items-center gap-1">

@@ -5,6 +5,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { LayoutDashboard, BarChart3, MessageSquare, Home, Sparkles, LogOut, ChevronDown, Search } from "lucide-react";
 import { BRAND } from "@/lib/brand";
+import { Logo } from "@/components/logo";
 
 const NAV = [
   { href: "/dashboard", label: "Overview", icon: LayoutDashboard, exact: true },
@@ -41,7 +42,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           className="hidden md:flex w-[248px] shrink-0 flex-col border-r border-neutral-200 bg-white p-3 sticky top-0 h-[100vh]"
         >
           <Link href="/" className="flex items-center gap-2.5 px-1.5 py-1 mb-3">
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#C45A3C] text-sm font-bold text-white shrink-0">{BRAND.logoLetter}</span>
+            <Logo />
             <span className="min-w-0">
               <span className="block text-sm font-semibold leading-none tracking-tight">{BRAND.name}</span>
               <span className="block text-[11px] text-neutral-500 leading-none mt-0.5">Asisten Caption UMKM</span>
@@ -104,7 +105,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <div className="sticky top-0 z-20 border-b border-neutral-200 bg-white/80 backdrop-blur">
             <div className="flex h-[52px] items-center justify-between gap-3 px-3 md:px-4">
               <div className="flex items-center gap-2 min-w-0">
-                <span className="flex md:hidden h-8 w-8 items-center justify-center rounded-full bg-[#C45A3C] text-xs font-bold text-white shrink-0">K</span>
+                <span className="flex md:hidden items-center shrink-0"><Logo className="h-8 w-8" /></span>
                 <div className="hidden sm:flex items-center gap-1.5 text-[13px] text-neutral-400">
                   <span>{crumbs[0]}</span>
                   <ChevronDown className="h-3 w-3 rotate-[-90deg] text-neutral-300" />
