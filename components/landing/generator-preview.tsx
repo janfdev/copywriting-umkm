@@ -11,29 +11,27 @@ type Props = {
   setTab: (v: string) => void;
   loading: boolean;
   variants: string[] | null;
-  sid: string | null;
   platform: Platform;
   tone: Tone;
 };
 
-export function GeneratorPreview({ tab, setTab, loading, variants, sid, platform, tone }: Props) {
+export function GeneratorPreview({ tab, setTab, loading, variants, platform, tone }: Props) {
   return (
     <Card className="p-4">
       <Tabs value={tab} onValueChange={setTab}>
         <TabsList>
           <TabsTrigger value="struk">Struk</TabsTrigger>
-          <TabsTrigger value="hp">Preview HP</TabsTrigger>
+          <TabsTrigger value="hp">Lihat di HP</TabsTrigger>
         </TabsList>
         <TabsContent value="struk">
           {loading ? (
             <div className="space-y-3">{[0, 1, 2].map((i) => <Skeleton key={i} className="h-40 w-full" />)}</div>
           ) : variants ? (
             <div className="space-y-3">
-              {sid && <div className="text-[10px] font-mono text-stone-400">sid: {sid.slice(0, 8)}</div>}
               {variants.map((v, i) => <StrukCard key={i} idx={i} text={v} platform={platform} tone={tone} />)}
             </div>
           ) : (
-            <div className="rounded-xl border border-dashed p-8 text-center text-sm text-stone-500">Isi form → 3 struk akan tercetak di sini</div>
+            <div className="rounded-xl border border-dashed p-8 text-center text-sm text-stone-500">Isi formulir → 3 struk akan tercetak di sini</div>
           )}
         </TabsContent>
         <TabsContent value="hp">

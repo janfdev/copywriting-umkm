@@ -22,7 +22,7 @@ export function LandingTestimonials({
 
   const submit = async () => {
     if (name.trim().length < 2 || quote.trim().length < 10) {
-      toast.error("Nama ≥2, testimoni ≥10 karakter");
+      toast.error("Nama minimal 2 huruf, testimoni minimal 10 huruf");
       return;
     }
     const res = await fetch("/api/testimonials", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name, quote, rating }) });

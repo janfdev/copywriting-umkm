@@ -1,4 +1,4 @@
-export function MarqueeBar({ text = "CURATED FOR INSTAGRAM · WHATSAPP · TIKTOK · FACEBOOK" }: { text?: string }) {
+export function MarqueeBar({ text = "BUAT JUALAN DI INSTAGRAM · WHATSAPP · TIKTOK · FACEBOOK" }: { text?: string }) {
   return (
     <div className="border-y border-stone-200 bg-white py-3 overflow-hidden">
       <div className="flex animate-[marquee_18s_linear_infinite] whitespace-nowrap hover:[animation-play-state:paused]">

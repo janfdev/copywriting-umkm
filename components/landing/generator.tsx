@@ -29,7 +29,6 @@ export function LandingGenerator({
   const [tone, setTone] = useState<Tone>("santai");
   const [loading, setLoading] = useState(false);
   const [variants, setVariants] = useState<string[] | null>(null);
-  const [sid, setSid] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [tab, setTab] = useState("struk");
 
@@ -54,7 +53,6 @@ export function LandingGenerator({
       const j = await res.json();
       if (!res.ok) throw new Error(j.message || "Gagal");
       setVariants(j.data.variants);
-      setSid(j.data.sessionId);
       const next = [{ productName, variants: j.data.variants }, ...history].slice(0, 5);
       onNewHistory(next);
       localStorage.setItem("caption_history", JSON.stringify(next));
@@ -86,7 +84,7 @@ export function LandingGenerator({
           error={error}
           onSubmit={submit}
         />
-        <GeneratorPreview tab={tab} setTab={setTab} loading={loading} variants={variants} sid={sid} platform={platform} tone={tone} />
+        <GeneratorPreview tab={tab} setTab={setTab} loading={loading} variants={variants} platform={platform} tone={tone} />
       </div>
     </section>
   );

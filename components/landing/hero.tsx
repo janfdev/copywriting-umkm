@@ -8,7 +8,7 @@ import type { Platform, Tone } from "@/lib/contracts/copywriting";
 const PREVIEW: { platform: Platform; tone: Tone; text: string }[] = [
   { platform: "instagram", tone: "ceria", text: "Bestie! Keripik Singkong 500gr renyah tanpa pengawet — 15rb aja! Stok terbatas!\n\n#Kaligawe #UMKM #JajananViral #FYP" },
   { platform: "whatsapp", tone: "santai", text: "*Hai kak! Jamu Kunyit Asem segar tanpa pemanis buatan — siap kirim Kaligawe!*" },
-  { platform: "tiktok", tone: "formal", text: "STOP SCROLL! Batik Tulis Kaligawe motif khas pewarna alami — cuma 30 detik lihat!\n\n#Kaligawe #UMKMKaligawe #FYP #BatikViral" },
+  { platform: "tiktok", tone: "formal", text: "Perkenalkan Batik Tulis Kaligawe — motif khas, pewarna alami, katun primis halus.\n\n#Kaligawe #UMKMKaligawe #BatikTulis" },
 ];
 
 export function LandingHero() {
@@ -39,17 +39,17 @@ export function LandingHero() {
             </span>
             <span className="inline-flex items-center gap-1.5 rounded-full bg-white border px-3 py-1">
               <Zap className="h-3.5 w-3.5" />
-              10/menit
+              Gratis 10x/menit
             </span>
             <span className="inline-flex items-center gap-1.5 rounded-full bg-white border px-3 py-1">
               <PenLine className="h-3.5 w-3.5" />
-              Groq + Gemini
+              Didukung AI
             </span>
           </div>
         </div>
         <Card className="overflow-hidden border-stone-200">
           <div className="bg-stone-900 px-4 py-2 flex items-center justify-between">
-            <span className="text-[10px] tracking-widest text-stone-400 font-mono">STRUK PREVIEW — 3 VARIAN</span>
+            <span className="text-[10px] tracking-widest text-stone-400 font-mono">CONTOH HASIL — 3 VARIAN</span>
             <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
           </div>
           <CardContent className="p-4 space-y-3 bg-[#FFFEFB]">

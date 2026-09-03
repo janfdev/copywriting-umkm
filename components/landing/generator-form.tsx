@@ -42,7 +42,7 @@ export function GeneratorForm({ productName, setProductName, description, setDes
             className={nameError ? "border-red-500 focus:border-red-500 ring-1 ring-red-500" : ""}
           />
           <p className={`mt-1 text-[11px] ${nameError ? "text-red-500 font-medium" : "text-stone-500"}`}>
-            {productName.length}/60 — {productName.length < 2 ? "minimal 2 karakter" : productName.length > 60 ? "maksimal 60" : "ok"}
+            {productName.length}/60 — {productName.length < 2 ? "minimal 2 karakter" : productName.length > 60 ? "maksimal 60" : "✓ sesuai"}
           </p>
         </div>
         <div>
@@ -56,7 +56,7 @@ export function GeneratorForm({ productName, setProductName, description, setDes
             className={descError ? "border-red-500 focus:border-red-500 ring-1 ring-red-500" : ""}
           />
           <p className={`mt-1 text-[11px] ${descError ? "text-red-500 font-medium" : "text-stone-500"}`}>
-            {description.length}/500 — {description.length < 20 ? `minimal 20 (${description.length})` : "ok"}
+            {description.length}/500 — {description.length < 20 ? `minimal 20 (${description.length})` : "✓ sesuai"}
           </p>
         </div>
         <div>
@@ -87,7 +87,7 @@ export function GeneratorForm({ productName, setProductName, description, setDes
         <Button type="submit" disabled={loading} className="w-full gap-2">
           {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4" />} {loading ? "Mencetak 3 struk…" : "Cetak 3 varian — Gratis"}
         </Button>
-        {loading && <p className="text-center text-xs text-stone-500">Groq → Gemini fallback</p>}
+        {loading && <p className="text-center text-xs text-stone-500">AI sedang menulis…</p>}
       </form>
     </Card>
   );

@@ -29,7 +29,7 @@ export default function Home() {
         setTestimonials([
           { name: "Bu Siti", quote: "Caption-nya langsung laris di WA!", rating: 5 },
           { name: "Pak Joko", quote: "Biasa bingung caption IG, sekarang 30 detik jadi.", rating: 5 },
-          { name: "Mbak Rina", quote: "Marketplace butuh judul SEO, dibantu banget.", rating: 4 },
+          { name: "Mbak Rina", quote: "Caption TikTok-nya bikin dagangan tambah rame!", rating: 4 },
         ]),
       );
     fetch("/api/testimonials/marquee")
@@ -44,7 +44,7 @@ export default function Home() {
   return (
     <div className="bg-[#F5F0E6]">
       <LandingHero />
-      <MarqueeBar text="CURATED FOR INSTAGRAM · WHATSAPP · TIKTOK · FACEBOOK" />
+      <MarqueeBar text="BUAT JUALAN DI INSTAGRAM · WHATSAPP · TIKTOK · FACEBOOK" />
       <LandingBento />
       <LandingExamples />
       <LandingGenerator history={history} onNewHistory={setHistory} />

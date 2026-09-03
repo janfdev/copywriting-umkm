@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const ITEMS = [
   { k: "01 MASALAH", t: "Bingung caption jualan tiap hari", d: "Foto produk ada, tapi kata-kata nggak jadi-jadi." },
   { k: "02 SOLUSI", t: "Isi 2 field → 3 varian langsung", d: "Pilih platform & nada, cetak struk siap tempel." },
-  { k: "03 HASIL", t: "Salin, tempel, langsung jualan", d: "Tanpa login, 10/menit, fallback Groq→Gemini.", dark: true },
+  { k: "03 HASIL", t: "Salin, tempel, langsung jualan", d: "Tanpa login, gratis 10x/menit, otomatis pakai AI terbaik.", dark: true },
 ];
 
 export function LandingBento() {
@@ -20,7 +20,7 @@ export function LandingBento() {
         ))}
       </div>
       <div className="mt-6 flex flex-wrap gap-2">
-        {["1 Isi produk", "2 Pilih platform", "3 Generate"].map((s) => (
+        {["1 Isi produk", "2 Pilih platform", "3 Cetak"].map((s) => (
           <span key={s} className="rounded-full bg-white border px-4 py-2 text-xs font-medium shadow-sm">
             {s}
           </span>
