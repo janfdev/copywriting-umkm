@@ -1,5 +1,9 @@
 # Canva Prompt per Halaman — Buku Panduan Captionin
 
+> ⚠️ **Versi baru (v2, disarankan):** `public/panduan/buku-panduan.html` — 10 halaman + cover + daftar isi, mengikuti struktur panduan teman (definisi → komponen → rumus → contoh → panduan tool bernomor). Buka di browser → Ctrl+P → Save as PDF.
+>
+> Di bawah ini prompt Canva mentah (v1, 7 hal) — tetap bisa dipakai jika mau desain manual.
+
 > Buat 7 halaman A5 (cover hal 1 buat sendiri, isi hal 2–7 di bawah). Cetak A5 lipat atau A4 bolak-balik.
 
 ---
