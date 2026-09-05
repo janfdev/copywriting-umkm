@@ -103,6 +103,14 @@ describe("stub distinct 16 cases", () => {
     const b = buildStubVariants({ productName: "Kopi", description: "Kopi enak harga murah cocok keluarga pagi hari", platform: "instagram", tone: "ceria" });
     expect(a[0]).not.toBe(b[0]);
   });
+  it("hashtags vary across 3 variants", () => {
+    for (const p of ["instagram", "tiktok", "facebook"] as const) {
+      const v = buildStubVariants({ productName: "Kopi", description: "Kopi arabika Gayo sangrai medium 250gr aromanya buah", platform: p, tone: "santai" });
+      const tags = v.map((s) => s.split("\n\n")[1] ?? "");
+      expect(new Set(tags).size).toBe(3);
+      expect(tags.join(" ")).toContain("#Kaligawe");
+    }
+  });
 });
 
 describe("guardrails", () => {
@@ -110,6 +118,7 @@ describe("guardrails", () => {
     expect(GUARDRAILS).toContain("HANYA");
     expect(GUARDRAILS).toContain("hashtag");
     expect(GUARDRAILS).toContain("Captionin");
+    expect(GUARDRAILS).toContain("VARIATIF");
   });
   it("prompt contains guardrails and product", () => {
     const p = buildPrompt({ productName: "Kopi", description: "Kopi arabika Gayo 250gr sangrai medium", platform: "instagram", tone: "santai" });

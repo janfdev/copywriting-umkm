@@ -7,11 +7,18 @@ const toneOpen: Record<Tone, string[]> = {
   ceria: ["Bestie", "Hai bestie", "Woy bestie"],
 };
 
-const platformWrap: Record<Platform, (t: string) => string> = {
-  instagram: (t) => `${t}\n\n#Kaligawe #UMKM #JualanLaris`,
+const platformTags: Record<Platform, string[]> = {
+  instagram: ["#Kaligawe #UMKM #JualanLaris", "#UMKMKaligawe #JajananPasar #KulinerLokal", "#Kaligawe #CemilanEnak #BelanjaLokal"],
+  whatsapp: [],
+  tiktok: ["#Kaligawe #UMKMKaligawe #FYP", "#JajananViral #KulinerLokal #UMKMKaligawe", "#RacunTikTok #Kaligawe #JualanOnline"],
+  facebook: ["#Kaligawe #UMKMLokal", "#UMKMKaligawe #KulinerNusantara", "#Kaligawe #BelanjaLokal #UMKMNaikKelas"],
+};
+
+const platformWrap: Record<Platform, (t: string, i: number) => string> = {
+  instagram: (t, i) => `${t}\n\n${platformTags.instagram[i % 3]}`,
   whatsapp: (t) => `*${t}*`,
-  tiktok: (t) => `${t}\n\n#Kaligawe #UMKMKaligawe #FYP`,
-  facebook: (t) => `${t}\n\n#Kaligawe #UMKMLokal`,
+  tiktok: (t, i) => `${t}\n\n${platformTags.tiktok[i % 3]}`,
+  facebook: (t, i) => `${t}\n\n${platformTags.facebook[i % 3]}`,
 };
 
 export function buildStubVariants(input: { productName: string; description: string; highlights?: string; platform: Platform; tone: Tone }): string[] {
@@ -22,7 +29,7 @@ export function buildStubVariants(input: { productName: string; description: str
   const v1 = `${opens[0]}! Cobain ${input.productName} — ${desc}${hlPart}. Cocok buat harian, rasa nagih! 📦 Chat WA sekarang ya kak!`;
   const v2 = `${opens[1]}! ${input.productName} ini ${desc.toLowerCase()}${hlPart ? ` — keunggulan: ${hl}` : ""}. Sudah banyak yang repeat order di Kaligawe, kamu kapan? 😉`;
   const v3 = `${opens[2]}! Lagi cari ${input.productName.toLowerCase()} yang enak & worth it? ${desc}${hlPart}. Stok terbatas minggu ini, amankan dulu! 🔥`;
-  return [v1, v2, v3].map((t) => platformWrap[input.platform](t));
+  return [v1, v2, v3].map((t, i) => platformWrap[input.platform](t, i));
 }
 
 export const GUARDRAILS = `ROLE: Kamu adalah Captionin — Asisten Caption UMKM Kaligawe. SATU TUGAS: buat 3 caption promosi human-friendly + hashtag untuk produk UMKM.
@@ -32,7 +39,7 @@ BATASAN WAJIB:
 - Bahasa Indonesia natural, hangat, seperti penjual ramah — bukan template robot. Selipkan 1-2 emoji natural, 1 kalimat personal. Panjang 120-220 char per varian, 3 varian HARUS beda angle (1: manfaat/rasa, 2: cerita/testimoni, 3: urgensi/promo).
 - Wajib pakai keunggulan (highlights) jika ada — jangan diabaikan.
 - Kepatuhan platform: instagram(120-220 char, 5-10 hashtag, 1-2 emoji, CTA komen/DM), whatsapp(pendek tapi lengkap, *bold* poin, CTA chat WA), tiktok(hook 3 detik, singkat padat, 3-6 hashtag #FYP, CTA komen/follow), facebook(cerita singkat, ramah, tanya balik, CTA share/komen).
-- Hashtag: wajib #Kaligawe atau #UMKMKaligawe + 2-4 hashtag relevan produk.
+- Hashtag VARIATIF per varian (ketiga varian dilarang pakai set tag yang sama): tiap varian = 1 tag lokal (#Kaligawe atau #UMKMKaligawe) + 2-4 tag relevan yang beda antar-varian. Turunkan tag dari kata produk (mis. "keripik singkong" → #KeripikSingkong #JajananPasar #CemilanEnak), campur tag populer + niche. Maks 1 tag tren (#FYP), jangan spam tag generik sekaligus (#viral #trending #fyp).
 - Output HARUS JSON array 3 string varian saja, tanpa penjelasan lain.`;
 
 export function buildPrompt(input: { productName: string; description: string; highlights?: string; platform: Platform; tone: Tone }): string {
