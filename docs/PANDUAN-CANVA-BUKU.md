@@ -2,16 +2,16 @@
 
 > Sumber cetak: `public/panduan/buku-panduan.html` (buka → Ctrl+P → PDF). Di bawah prompt per halaman + data contoh + daftar screenshot.
 
-## Daftar Screenshot (foto dulu sebelum desain)
+## Daftar Screenshot (OPSIONAL — buku sudah terisi penuh)
 
-| # | Apa | Cara ambil | Dipakai di |
-|---|-----|-----------|------------|
-| S1 | **Generator form** (WAJIB) | Buka `#buat-caption` di HP/laptop → screenshot form + tombol Cetak | Hal 5 — panah ①②③ ke Nama, Platform/Nada, tombol |
-| S2 | **Hasil struk + tombol Salin** | Isi form contoh → screenshot 3 struk hasil | Hal 6 — bukti before-after |
-| S3 | **Tab "Lihat di HP"** | Klik tab → screenshot preview HP | Hal 7 — perbandingan WA vs IG |
-| S4 | **Hero section** (pendukung) | Screenshot atas landing (headline + tombol) | Hal 1/3 — wajah aplikasi |
+Semua halaman sudah berisi konten asli (mockup + contoh teks), jadi **bisa cetak langsung tanpa screenshot**. Tabel di bawah hanya untuk upgrade visual saat final:
 
-**Jawaban singkat: generator form WAJIB (inti panduan), hero hanya pendukung.** Hero menunjukkan aplikasi terlihat seperti apa; form yang diajari langkahnya.
+| # | Apa | Cara ambil | Ganti apa |
+|---|-----|-----------|-----------|
+| S1 | Generator form asli | `#buat-caption` → screenshot form + tombol | Mockup bernomor hal 5 |
+| S2 | Hasil struk asli | Isi contoh → screenshot 3 struk | Mockup struk hal 6 |
+| S3 | Tab "Lihat di HP" asli | Klik tab → screenshot | Mockup HP hal 7 |
+| S4 | Hero asli | Screenshot atas landing | Mockup hero hal 3 |
 
 ## Data Contoh (pakai di semua halaman, konsisten)
 
