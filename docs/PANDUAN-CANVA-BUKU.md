@@ -1,208 +1,66 @@
-# Canva Prompt per Halaman — Buku Panduan Captionin
+# Prompt Canva — Buku Panduan Captionin (8 hal A5)
 
-> ⚠️ **Versi baru (v2, disarankan):** `public/panduan/buku-panduan.html` — 10 halaman + cover + daftar isi, mengikuti struktur panduan teman (definisi → komponen → rumus → contoh → panduan tool bernomor). Buka di browser → Ctrl+P → Save as PDF.
->
-> Di bawah ini prompt Canva mentah (v1, 7 hal) — tetap bisa dipakai jika mau desain manual.
+> Sumber cetak: `public/panduan/buku-panduan.html` (buka → Ctrl+P → PDF). Di bawah prompt per halaman + data contoh + daftar screenshot.
 
-> Buat 7 halaman A5 (cover hal 1 buat sendiri, isi hal 2–7 di bawah). Cetak A5 lipat atau A4 bolak-balik.
+## Daftar Screenshot (foto dulu sebelum desain)
 
----
+| # | Apa | Cara ambil | Dipakai di |
+|---|-----|-----------|------------|
+| S1 | **Generator form** (WAJIB) | Buka `#buat-caption` di HP/laptop → screenshot form + tombol Cetak | Hal 5 — panah ①②③ ke Nama, Platform/Nada, tombol |
+| S2 | **Hasil struk + tombol Salin** | Isi form contoh → screenshot 3 struk hasil | Hal 6 — bukti before-after |
+| S3 | **Tab "Lihat di HP"** | Klik tab → screenshot preview HP | Hal 7 — perbandingan WA vs IG |
+| S4 | **Hero section** (pendukung) | Screenshot atas landing (headline + tombol) | Hal 1/3 — wajah aplikasi |
 
-## Halaman 2 — Langkah Pakai
+**Jawaban singkat: generator form WAJIB (inti panduan), hero hanya pendukung.** Hero menunjukkan aplikasi terlihat seperti apa; form yang diajari langkahnya.
 
+## Data Contoh (pakai di semua halaman, konsisten)
+
+- **Produk:** Keripik singkong balado pedas manis
+- **Rumus:** Nama + Harga + 1 Keunggulan → "Keripik singkong balado pedas manis, kemasan 250 gram, harga 15 ribu, renyah tanpa pengawet"
+- **Contoh 2 (WA):** Jamu Kunyit Asem — segar tanpa pemanis, siap kirim Kaligawe
+
+## Prompt per Halaman
+
+### Hal 1 — Sampul
 ```
-LAYOUT:
-- Judul: "3 LANGKAH PAKAI" (bold, 24px, terracotta #C45A3C)
-- 3 kolom sama besar, cards putih rounded 16px
-
-KOLOM 1 — TULIS:
-- Icon: 📝 atau pena
-- Judul: "1. Tulis Produk"
-- Isi:
-  • Nama produk (2–60 huruf)
-  • Deskripsi singkat (20–500 huruf)
-  • Keunggulan opsional (≤200 huruf)
-- Contoh: "Keripik Singkong Original"
-
-KOLOM 2 — PILIH:
-- Icon: 🎯 atau checklist
-- Judul: "2. Pilih"
-- Isi:
-  • Platform: Instagram, WhatsApp, TikTok, Facebook
-  • Nada: Santai, Formal, Ceria, Persuasif
-- Contoh: "Instagram + Ceria"
-
-KOLOM 3 — CETAK:
-- Icon: 🖨️ atau printer
-- Judul: "3. Cetak"
-- Isi:
-  • Klik "Cetak 3 Varian — Gratis"
-  • 3 struk muncul
-  • Salin → Tempel ke sosmed
-
-WARNA: background #F5F0E6, cards putih, text #1A1A18
+A5 cover, bg parchment #F5F0E6. Logo Captionin atas. Judul "Buku Panduan Captionin" 28px bold + sub "Asisten Promosi UMKM". Tagline italic: "Bikin kata-kata jualan otomatis dalam 30 detik." QR besar tengah (captionin.vercel.app/#buat-caption) + "Scan — langsung coba, tanpa login". Footer: Pasar Kaligawe 2026.
 ```
 
----
-
-## Halaman 3 — Contoh Hasil
-
+### Hal 2 — Daftar Isi
 ```
-LAYOUT:
-- Judul: "CONTOH HASIL" (bold, 24px, terracotta)
-- 2 box contoh (kiri/kanan), background #FFFEFB, border dashed
-
-BOX 1 — INSTAGRAM:
-- Label: "Instagram · Ceria" (badge style)
-- Isi caption:
-  "Bestie! Cobain Keripik Singkong Original — Keripik singkong 500gr renyah tanpa pengawet ✨ tanpa pengawet, 500gr. Cocok buat harian! 📦
-
-#Kaligawe #UMKM #JajananViral #FYP"
-- Footer: "5–10 hashtag · 1–2 emoji"
-
-BOX 2 — WHATSAPP:
-- Label: "WhatsApp · Santai"
-- Isi caption:
-  "*Hai kak! Jamu Kunyit Asem segar tanpa pemanis buatan — siap kirim Kaligawe! Chat WA sekarang ya kak!*"
-- Footer: "*bold* poin · CTA Chat WA"
-
-WARNA: background #F5F0E6, box #FFFEFB, text #1A1A18
+Judul "Daftar Isi". 7 baris dotted: 1 Pengenalan(3) 2 Persiapan(4) 3 Langkah(5) 4 Before-After(6) 5 Perbandingan(7... dst. Note box: baca 3-4 dulu, ikuti 5 sambil buka HP.
 ```
 
----
-
-## Halaman 4 — QR + Tips
-
+### Hal 3 — Pengenalan
 ```
-LAYOUT:
-- Split: kiri tips, kanan QR
-
-KIRI — TIPS HASIL BAGUS:
-- Judul: "TIPS" (bold, terracotta)
-- List:
-  1. Tulis deskripsi SPESIFIK (berat, bahan, harga) — jangan cuma "enak"
-  2. Isi KEUNGGULAN biar masuk ke 3 varian
-  3. Coba ganti NADA & PLATFORM — hasil beda angle
-  4. Gagal? Border merah = perbaiki field · Terlalu sering = tunggu 1 menit
-
-KANAN — QR BUKA DI HP:
-- Judul: "BUKA DI HP" (bold)
-- QR code (120×120px) → https://captionin.vercel.app/#buat-caption
-- Link text: captionin.vercel.app/#buat-caption
-- Label: "GRATIS · TANPA LOGIN · 10x/menit"
-
-FOOTER (bawah):
-- "© KKM Kaligawe · Captionin"
-- "Limit 10 permintaan per menit"
-
-WARNA: tips box putih, QR box #FFFEFB dashed
+Judul "1 · Pengenalan". Box "Apa itu": 1-2 kalimat alat gratis merangkai kata jualan. List manfaat: hemat waktu, disesuaikan WA/IG/FB. Placeholder S4 (hero) + caption "wajah aplikasi".
 ```
 
----
-
-## Halaman 5 — Cara Isi Field (Benar / Gagal)
-
+### Hal 4 — Persiapan
 ```
-LAYOUT:
-- Judul: "CARA ISI FIELD" (bold, 24px, terracotta #C45A3C)
-- Tabel 3 kolom: Field | Benar ✅ | Gagal ❌ — 4 baris, cards putih
-
-BARIS 1 — NAMA PRODUK:
-- Benar: "Keripik Singkong Original" (2–60 huruf)
-- Gagal: "A" — terlalu pendek, border merah
-
-BARIS 2 — DESKRIPSI:
-- Benar: "Keripik singkong 500gr renyah tanpa pengawet 15rb" (20–500 huruf)
-- Gagal: "Enak" — minimal 20 huruf, submit batal
-
-BARIS 3 — KEUNGGULAN (opsional):
-- Benar: "tanpa pengawet, 500gr" (≤200 huruf, masuk ke 3 varian)
-- Gagal: 200+ huruf — ditolak, toast merah
-
-BARIS 4 — PLATFORM & NADA:
-- Benar: Instagram / WhatsApp / TikTok / Facebook + Santai / Formal / Ceria / Persuasif
-- Catatan: tiap platform format beda (IG hashtag, WA *bold*, TikTok #FYP, FB cerita)
-
-FOOTER KECIL:
-- "Helper: Maks 60 · {len}/500 — minimal 20 · Loading: 3 struk skeleton"
-
-WARNA: background #F5F0E6, header tabel #1A1A18 teks putih, baris putih
+Judul "2 · Persiapan". Formula box gelap: "Nama Produk + Harga + 1 Keunggulan Utama". Tabel 2 baris: ❌ "Keripik enak" (AI bingung) vs ✅ teks panjang spesifik.
 ```
 
----
-
-## Halaman 6 — Jika Gagal + FAQ
-
+### Hal 5 — 3 Langkah
 ```
-LAYOUT:
-- Split atas: troubleshooting (kiri) + error code (kanan)
-- Bawah: FAQ 3 item accordion-style
-
-KIRI — JIKA GAGAL:
-- Judul: "JIKA GAGAL" (bold, terracotta)
-- List dengan icon ⚠️:
-  1. Border merah + pesan → perbaiki field sesuai aturan
-  2. "Terlalu sering" → tunggu 1 menit (limit 10/menit)
-  3. Tidak ada struk → cek koneksi internet, coba lagi
-
-KANAN — KODE ERROR:
-- Judul: "ARTI KODE" (bold)
-- Box mono #FFFEFB dashed:
-  • 400 = validasi (field kurang)
-  • 429 = limit (tunggu 1 menit)
-  • 500 = server/AI sibuk (coba lagi)
-
-BAWAH — FAQ:
-- Judul: "SERING DITANYA" (bold, terracotta)
-- Q1: "Gratis?" → A: "Ya, gratis untuk pedagang Kaligawe."
-- Q2: "Perlu login?" → A: "Tidak. Langsung pakai."
-- Q3: "Hasil bisa diedit?" → A: "Bisa. Salin lalu ubah sesukamu sebelum posting."
-
-WARNA: background #F5F0E6, error box merah muda #FEF2F2 border merah, FAQ putih
+Judul "3 · Panduan Inti". Mockup form bernomor ① Ketik produk ② Pilih tujuan (Ceria=IG, Santai=WA) ③ Cetak & Salin. Placeholder S1 + instruksi "panah ①②③".
 ```
 
----
-
-## Halaman 7 — Penutup + QR Besar
-
+### Hal 6 — Before-After
 ```
-LAYOUT:
-- Tengah: QR besar + ajakan + testimoni mini + footer
-
-ATAS — AJAKAN:
-- Judul: "COBA SEKARANG" (bold, 28px, terracotta)
-- Sub: "Deskripsi singkat → 3 varian caption. Salin, tempel, jualan."
-
-TENGAH — QR BESAR:
-- QR code (160×160px) → https://captionin.vercel.app/#buat-caption
-- Link text mono: captionin.vercel.app/#buat-caption
-- Badge: "GRATIS · TANPA LOGIN · 10x/menit"
-
-BAWAH — TESTIMONI MINI (2 kolom):
-- "Caption-nya langsung laris di WA!" — Bu Siti ⭐⭐⭐⭐⭐
-- "Biasa bingung caption IG, sekarang 30 detik jadi." — Pak Joko ⭐⭐⭐⭐⭐
-
-FOOTER:
-- "© KKM Kaligawe · Captionin — Asisten Caption UMKM"
-- "KKM Kaligawe 2026 · Pasar Kaligawe"
-
-WARNA: background #1A1A18 (ink, halaman penutup gelap), teks putih, QR box putih rounded
+Judul "4 · Contoh Hasil". Box mono teks mentah (data contoh) → panah → box hasil + hashtag. Placeholder S2 (struk + tombol Salin).
 ```
 
----
+### Hal 7 — Perbandingan Platform
+```
+Judul "5 · Perbandingan". 2 kolom: WA (bold, pendek, sapaan) vs IG (emoji, hashtag). Placeholder S3 (tab HP).
+```
 
-## Cara Pakai di Canva
+### Hal 8 — Solusi + FAQ (bg gelap #1A1A18, teks putih)
+```
+3 bullet tanpa bahasa teknis: kotak merah→cek 20 huruf; "Tunggu"→1 menit; kosong→cek internet + tarik layar. FAQ: gratis, batas/menit, bebas edit. QR kecil + © KKM Kaligawe 2026.
+```
 
-1. **Buat design baru** → Custom size A5 (148×210mm) atau A4
-2. **Copy-paste** elemen di atas per halaman
-3. **Atur warna**: 
-   - Background: `#F5F0E6` (parchment)
-   - Accent: `#C45A3C` (terracotta)
-   - Text: `#1A1A18` (ink)
-4. **Export** → PDF → cetak
-
----
-
-## File Siap Pakai (HTML → Canva)
-
-Buka `public/panduan/buku-saku.html` di browser → Ctrl+P → Save as PDF → Upload ke Canva → Edit ulang kalau perlu.
+## Warna & Font (semua hal)
+- BG `#F5F0E6`, aksen `#C45A3C`, teks `#1A1A18`, hal 8 gelap `#1A1A18`
+- Font: Poppins; mono untuk contoh teks
